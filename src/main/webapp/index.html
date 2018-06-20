@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>集信智财-理财课堂</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="i/favicon.png">
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/lckt.css"/>
+    <link rel="stylesheet" href="css/site.css"/>
+</head>
+<body>
+<!--public header begin-->
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand am-hide-sm">
+            <a href="#"><img src="/images/logo.png"/></a>
+        </h1>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only" data-am-collapse="{target: '#collapse-head'}">
+            <span class="am-sr-only">导航切换</span>
+            <span class="am-icon-bars"></span>
+        </button>
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li class="am-active"><a href="/">首页</a></li>
+                <li><a onclick="smart()" >智能理财</a></li>
+                <li><a href="/lckt.html">理财课堂</a></li>
+                <li><a href="/intelligent/user_data.html">我的</a></li>
+            </ul>
+            <div class="am-topbar-right" id="logoutDiv" style="display:none;margin: 15px 0px 0px 0px;">
+                <a onclick="logout()" class="am-btn am-topbar-btn am-btn-sm">
+                    <span class="am-icon-pencil"></span>注销
+                </a>
+            </div>
+            <div class="am-topbar-right" id="signUpDiv">
+                <a href="/sign-up.html" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</a>
+            </div>
+            <div class="am-topbar-right" id="loginInfoDiv" style="margin: 30px 0px 0px 0px;"></div>
+            <div class="am-topbar-right" id="loginBtnDiv">
+                <a href="/login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">
+                    <span class="am-icon-user"></span> 登录</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div  data-am-widget="slider" class="am-slider am-slider-b2" data-am-slider='{"controlNav":false}'>
+    <ul class="am-slides">
+        <li>
+            <img src="assets/img/1.jpg" style="height: 600px">
+
+        </li>
+        <li>
+            <img src="assets/img/2.jpg" style="height: 600px">
+
+        </li>
+        <li>
+            <img src="assets/img/3.jpeg" style="height: 600px">
+
+        </li>
+    </ul>
+</div>
+
+
+<div class="">
+    <div class="am-g am-container">
+
+        <div class="am-u-lg-8 am-u-md-6 am-u-sm-12">
+
+
+        </div>
+
+        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 hope-img">
+            <!--<img src="assets/i/examples/landing.png" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">-->
+            <hr class="am-article-divider am-show-sm-only hope-hr">
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="am-container">
+        <div class="am-u-sm-3">
+            <span class="aboutUs">关于集信智财</span>
+            <ul class="aboutUs-list">
+                <li><a href="###">关于我们</a></li>
+                <li><a href="###">发展历程</a></li>
+                <li><a href="###">友情链接</a></li>
+            </ul>
+        </div>
+        <div class="am-u-sm-5">
+            <span class="jxzc_intro"><img src="/images/logo_little.png" alt="" height="38px" width="38">集信智财</span>
+            <p class="intro_cont">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp集信智财管理平台依托于北京大学国家金融研究中心研究团队，由北京大学国家金融研究中心独立设计；立足于专业研究成果，
+                以教学实践、探索行业发展新思路为主要宗旨的公益性智能理财平台。平台核心功能模块：智能理财和理财课堂，
+                分别提供财富管理方案解决和投资知识科普等。各部分相辅相成，致力于为用户提供全方位的专业服务。</p>
+        </div>
+        <div class="am-u-sm-4">
+            <div class="footer_weixin">
+                <img src="/images/qrcode.png" alt="关注微信" width="82px"/>
+                <p> 关注微信</p>
+            </div>
+            <div class="footer_downLoad">
+                <img src="/images/qrcode.png" alt="扫码下载" width="82px"/>
+                <p> 扫码下载</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<script>
+    $.ajax({
+        type: "post",
+        dataType: "json",
+        url: '/intelligence/isOrNotLogin.do',
+        success: function (data) {
+            if (data.data != null) {
+                document.getElementById('loginBtnDiv').style.display = 'none';
+                document.getElementById('signUpDiv').style.display = 'none';
+                document.getElementById("loginInfoDiv").innerHTML = "用户:" + data.data;
+                document.getElementById('logoutDiv').style.display = '';
+            }
+        },
+    });
+</script>
+<script>
+    function smart() {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: '/intelligence/isOrNotLogin.do',
+            success: function (data) {
+                if (data.data != null) {
+                    $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: '/algor/ageIsOrNOtExist.do',
+                        success: function (data) {
+                            if (data.age == null) {
+                                window.location.href='/intelligent/robot-advisor.html';
+                            } else {
+                                window.location.href='/intelligent/portfolio.html';
+                            }
+                        },
+                    });
+                }else {
+                    window.location.href='/intelligent/robot-advisor.html';
+                }
+            },
+        });
+    }
+</script>
+<!-- 注销-->
+<script>
+    function logout() {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: '/user/logout.do',
+            success: function (data) {
+                if (data.code == "SUCCESS") {
+                    alert(data.msg)
+                    window.location.href='/';
+                }else {
+                    window.location.href='/';
+                }
+            },
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
